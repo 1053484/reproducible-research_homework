@@ -1,6 +1,9 @@
 # Reproducible research: version control and R
 
-\# INSERT ANSWERS HERE #
+Question 4:
+4.1 What do you observe?
+A generated data frame defined as df, creates coordinates x and y at each time point starting at time 1
+
 
 ## Instructions
 
