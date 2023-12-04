@@ -1,8 +1,24 @@
 # Reproducible research: version control and R
 
+Questions 1, 2 & 3: 
+
 Question 4:
 4.1 What do you observe?
-A generated data frame defined as df, creates coordinates x and y at each time point starting at time 1
+
+A generated data frame defined as df, creates coordinates x and y at each time point starting at time 1. The first row and timepoint of df is assigned x and y coordinates of 0, 0. This means the walk always starts at these coordinates. 
+From here a for loop denotes the rest of the coordinates starting from row two, with a constant 'step' size set at 0.25. The 'runif' function generates random deviates for the angle of the step bewteen 0 and 2pi. Then df is built upon, with the x based on the cosine of the random angles and the y based on the sine of the angle, both of which are multiplied by the step size of 0.25 to create the next coordinates at the next timepoint. This is repeated and builds up df. Data1 is df for 500 steps. Data2 is the same but is run separately to create other random angles for each step.  
+
+A plot is then generated based on these datasets. 'plot1' is a ggplot with coordinates based on the x and y coordinates in data1. Function geom_path creats a plot whereby the generated coordinates are connected based on the order they appear in time, whilst the colour is also denoted by timepoint. 'plot2' is the same but instead based on coordinates in data2. The two plots are presented next to each other with number of colours for the two plots as two. 
+
+The result is 2 randomly generated paths with 500 steps, the step distance is the same throughout but the angle of the step is random from one step to the next. The two colours are gradiented based on time, this allows us to observe the direction of the path in time. Because there are no limits in how far the coordinates reach, the plots are not scaled with each other.
+Each time you run the code, the datasets can change, and therefore changing the plots.
+
+4.2 Investigate the term 'random seeds'
+
+Wikepedia defines a random seed as 'a number (or vector) used to initialise a pseudorandom number generator.' Pseudorandomness makes random processes detirministic and repeatable. A seed determines the outcome of the pseudorandomly generated numbers. A seed can be defined in programming, in R this is done by using the 'set.seed()' function.
+Without a set seed detirmining the psuedorandom outcome, the seed will be set by default states of the computer system (e.g. Time). In situations where reproducibility is crucial then a seed must be set so others can see your results.
+
+4.3 Generate a reproducible simulation of brownian motion.
 
 
 ## Instructions
