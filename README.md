@@ -19,6 +19,8 @@ Wikepedia defines a random seed as 'a number (or vector) used to initialise a ps
 Without a set seed detirmining the psuedorandom outcome, the seed will be set by default states of the computer system (e.g. Time). In situations where reproducibility is crucial then a seed must be set so others can see your results.
 
 4.3 Generate a reproducible simulation of brownian motion.
+4.4 Image showing commit
+![Image showing commit changes](https://github.com/karlaashman/reproducible-research_homework/blob/dev/question%204%20commit.jpg)
 
 
 ## Instructions
