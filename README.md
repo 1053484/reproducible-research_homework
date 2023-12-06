@@ -19,6 +19,7 @@ Wikepedia defines a random seed as 'a number (or vector) used to initialise a ps
 Without a set seed detirmining the psuedorandom outcome, the seed will be set by default states of the computer system (e.g. Time). In situations where reproducibility is crucial then a seed must be set so others can see your results.
 
 4.3 Generate a reproducible simulation of brownian motion.
+<<<<<<< HEAD
 4.4 Show edits made in code
 
 Question 5:
@@ -73,6 +74,10 @@ ggplot(q5_data_clean, aes(x=log_genome_length,y=log_virion_volume))+
 5.5 What is the estimated volume of a 300 kb dsDNA virus?
 Using the linear model I can estimate the volume of a 300 kb dsDNA virus using the predict function.
 The estimated volume of a 300kb dsDNA virus under the linear model is 6,698,076nm^3
+=======
+4.4 Image showing commit
+![Image showing commit changes](https://github.com/karlaashman/reproducible-research_homework/blob/dev/question%204%20commit.jpg)
+>>>>>>> f042524637346ef321c52bece67f58b0f814cfe9
 
 
 ```{r}
