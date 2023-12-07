@@ -3,9 +3,9 @@
 
 Candidate number: 1053484
 
-Questions 1, 2 & 3: 
+Questions 1, 2 & 3:  [Linked here](https://github.com/841053/logistic_growth/tree/main/LogisticGrowthProject)
 
-[Linked here](https://github.com/841053/logistic_growth/tree/main/LogisticGrowthProject)
+https://github.com/841053/logistic_growth/tree/main/LogisticGrowthProject
 
 # Question 4:
 
