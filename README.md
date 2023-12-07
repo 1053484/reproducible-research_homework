@@ -1,6 +1,11 @@
+
 # Reproducible research: version control and R
 
-Questions 1, 2 & 3: [Linked here](https://github.com/841053/logistic_growth/tree/main/LogisticGrowthProject)
+Candidate number: 1053484
+
+Questions 1, 2 & 3:  [Linked here](https://github.com/841053/logistic_growth/tree/main/LogisticGrowthProject)
+
+https://github.com/841053/logistic_growth/tree/main/LogisticGrowthProject
 
 # Question 4:
 
@@ -22,7 +27,7 @@ Without a set seed detirmining the psuedorandom outcome, the seed will be set by
 4.3 Generate a reproducible simulation of brownian motion.
 
 4.4 Image showing commit
-![Image showing commit changes](https://github.com/karlaashman/reproducible-research_homework/blob/dev/question%204%20commit.jpg)
+![Image showing commit changes](https://github.com/841053/reproducible-research_homework/blob/main/question%204%20commit.jpg)
 
 # Question 5: 
 
@@ -109,6 +114,19 @@ estimated_volume<-exp(log_estimated_volume)
 print(estimated_volume)
 
 ```
+Bonus: Explain the difference between reproducibility and replicability in scientific research. How can git and GitHub be used to enhance the reproducibility and replicability of your work? what limitations do they have? (e.g. check the platform [protocols.io](https://www.protocols.io/)).
+
+If a scientific analysis is reproducible, the analysis of the same dataset can be rerun to create the same results. Data and analysis codes should be provided alongside the published results to increase the reproducibility of published research. This would allow others to ensure the credibility of the results by replicating the analysis. Replicability is when the same results are found using different datasets and analyses, which would further enhance the credibility of scientific findings. 
+
+Git is a version control system that records changes to code in repositories. This allows researchers to return to previous versions of the code. This is important for reproducibility as the code used to create published results can always be traced by looking at commit histories. This code can then be reviewed to ensure the validity of results, and that no mistakes were made that could lead to incorrect results. The fact that Git has a remote repository, as well as a local repository, ensures that the code can constantly be retrieved if the local repository is lost. Git’s documentation of coding history can also be necessary for replicability. If a new dataset is generated, researchers can look back at what has been analysed for similar datasets to gather ideas for what kind of analysis they would wish to perform and test to see if they produce the same results.
+
+GitHub is an online platform whereby the Git repository can be shared; this allows for reproducibility across the scientific field as other researchers can access the code for one analysis and reproduce the same results. They can also review the code to ensure no mistakes were made or worse that specific data was tampered with to produce a desirable result. GitHub also has a useful user interface with the incorporation of readme.md files can help provide insights into navigating complex analyses and large amounts of data.
+
+However, although these systems allow for the reproducibility of the analysis, they don’t account for the replicability of the dataset. If someone wanted to replicate the results with a new dataset, there are no records of how data had been collected and measured previously. Issues with experimental design whilst collecting data could lead to a misleading/incorrect result when that data is analysed. 
+
+Platform protocols.io tackles the limitation of the reproducibility of experimental methods. It is a platform where all methods of an experiment can be shared across a community or between individuals. It has elements similar to GitHub, such as forking, but instead of only annotating and reproducing code, many methods can be shared for all types of experiments. The website states numerous examples of protocols already shared, including molecular biology, medical trials and ecology. This means experiments can be made replicable and test the credibility of results. 
+
+
 ## Instructions
 
 The homework for this Computer skills practical is divided into 5 questions for a total of 100 points (plus an optional bonus question worth 10 extra points). First, fork this repo and make sure your fork is made **Public** for marking. Answers should be added to the # INSERT ANSWERS HERE # section above in the **README.md** file of your forked repository.
