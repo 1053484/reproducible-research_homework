@@ -1,0 +1,12 @@
+---
+title: "reproducible-research_homework"
+author: "Candidate 1053484"
+date: "07/12/2023"
+output: pdf_document
+---
+
+Candidate Number: 1053484
+
+[Link to repository:](https://github.com/841053/reproducible-research_homework) 
+
+https://github.com/841053/reproducible-research_homework
