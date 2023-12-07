@@ -1,7 +1,114 @@
 # Reproducible research: version control and R
 
-\# INSERT ANSWERS HERE #
+Questions 1, 2 & 3: [Linked here](https://github.com/841053/logistic_growth/tree/main/LogisticGrowthProject)
 
+# Question 4:
+
+4.1 What do you observe?
+
+A generated data frame defined as df, creates coordinates x and y at each time point starting at time 1. The first row and timepoint of df is assigned x and y coordinates of 0, 0. This means the walk always starts at these coordinates. 
+From here a for loop denotes the rest of the coordinates starting from row two, with a constant 'step' size set at 0.25. The 'runif' function generates random deviates for the angle of the step bewteen 0 and 2pi. Then df is built upon, with the x based on the cosine of the random angles and the y based on the sine of the angle, both of which are multiplied by the step size of 0.25 to create the next coordinates at the next timepoint. This is repeated and builds up df. Data1 is df for 500 steps. Data2 is the same but is run separately to create other random angles for each step.  
+
+A plot is then generated based on these datasets. 'plot1' is a ggplot with coordinates based on the x and y coordinates in data1. Function geom_path creats a plot whereby the generated coordinates are connected based on the order they appear in time, whilst the colour is also denoted by timepoint. 'plot2' is the same but instead based on coordinates in data2. The two plots are presented next to each other with number of colours for the two plots as two. 
+
+The result is 2 randomly generated paths with 500 steps, the step distance is the same throughout but the angle of the step is random from one step to the next. The two colours are gradiented based on time, this allows us to observe the direction of the path in time. Because there are no limits in how far the coordinates reach, the plots are not scaled with each other.
+Each time you run the code, the datasets can change, and therefore changing the plots.
+
+4.2 Investigate the term 'random seeds'
+
+Wikepedia defines a random seed as 'a number (or vector) used to initialise a pseudorandom number generator.' Pseudorandomness makes random processes detirministic and repeatable. A seed determines the outcome of the pseudorandomly generated numbers. A seed can be defined in programming, in R this is done by using the 'set.seed()' function.
+Without a set seed detirmining the psuedorandom outcome, the seed will be set by default states of the computer system (e.g. Time). In situations where reproducibility is crucial then a seed must be set so others can see your results.
+
+4.3 Generate a reproducible simulation of brownian motion.
+
+4.4 Image showing commit
+![Image showing commit changes](https://github.com/karlaashman/reproducible-research_homework/blob/dev/question%204%20commit.jpg)
+
+# Question 5: 
+
+Relationship between virus particle volume and genome length
+
+[code found here](https://github.com/841053/reproducible-research_homework/blob/main/question-5-data/question_5_code.R)
+
+5.1 How many rows and columns?
+```{r}
+#Dimensions i.e. number of rows and columns
+dim.data.frame(q5_data)
+```
+There are 33 rows and 13 columns in the table.
+
+5.2 What transformations can you use to fit a linear model to the data? Apply the transformation
+
+**$`ln(V)=ln(\beta)+ ln(L){\alpha}`$**
+
+A natural log can be used to fit a linear model to the data to apply the log I used the below code.
+```{r}
+#Clean column names
+install.packages("janitor")
+library(janitor)
+q5_data_clean<-clean_names(q5_data)
+#Log transform columns
+q5_data_clean$log_genome_length<-log(q5_data_clean$genome_length_kb)
+q5_data_clean$log_virion_volume<-log(q5_data_clean$virion_volume_nm_a_nm_a_nm)
+```
+5.3 Find exponent and scaling factor of the allometric law for dsDNA viruses and write p-values from the model you obtained.
+
+```{r}
+linear_model<-lm(log_virion_volume~log_genome_length, q5_data_clean )
+summary(linear_model)
+
+```
+5.3.1 find estimates and p-values:
+- Exponent ($\alpha$) estimate = 1.52
+   - P-value of $\alpha$ estimate = 6.44e-10
+- Scaling factor ($\beta$) estimate = 1182
+   - P-value of $\beta$ = 2.28e-10
+
+5.3.2 Are they statistically significant?
+Both p-values are smaller than 0.05 therefore the estimates are statistically significant.
+
+5.3.3 Compare the values to those shown in the paper, did you find the same values?
+My results match the results for dsDNA in the paper.
+
+5.4 Write the code to reproduce the figure shown below
+```{r}
+#plot
+
+plot<-ggplot(q5_data_clean, aes(x=log_genome_length,y=log_virion_volume))+
+  geom_point(size=2)+
+  geom_smooth(method = lm, size=1)+
+  labs(x="log [Genome length (kb)]", y="log [Virion volume (nm3)]")+
+  theme_bw()+
+  theme(axis.title=element_text(face="bold"))
+
+plot
+
+```
+[Figure as png](https://github.com/841053/reproducible-research_homework/blob/main/question-5-data/reproduced_figure.png)
+
+5.5 What is the estimated volume of a 300 kb dsDNA virus?
+Using the linear model I can estimate the volume of a 300 kb dsDNA virus using the predict function.
+The estimated volume of a 300kb dsDNA virus under the linear model is 6,698,076nm^3
+
+```{r}
+#5.5 Estimating virus volume
+
+#Linear model
+linear_model_2<-lm(log(virion_volume_nm_a_nm_a_nm)~log(genome_length_kb), q5_data_clean )
+summary(linear_model_2)
+
+#Creating a data.frame with a genome length of 300kb
+genome_300_kb<-data.frame(genome_length_kb=(300))
+
+#Using predict() function to estimate volume for this value
+log_estimated_volume<-predict(linear_model_2, newdata=genome_300_kb)
+
+#Back-transforming the volume to get true volume in nm^3
+estimated_volume<-exp(log_estimated_volume)
+
+print(estimated_volume)
+
+```
 ## Instructions
 
 The homework for this Computer skills practical is divided into 5 questions for a total of 100 points (plus an optional bonus question worth 10 extra points). First, fork this repo and make sure your fork is made **Public** for marking. Answers should be added to the # INSERT ANSWERS HERE # section above in the **README.md** file of your forked repository.
