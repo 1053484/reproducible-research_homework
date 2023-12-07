@@ -2,7 +2,8 @@
 
 Questions 1, 2 & 3: [Linked here](https://github.com/841053/logistic_growth/tree/main/LogisticGrowthProject)
 
-Question 4:
+# Question 4:
+
 4.1 What do you observe?
 
 A generated data frame defined as df, creates coordinates x and y at each time point starting at time 1. The first row and timepoint of df is assigned x and y coordinates of 0, 0. This means the walk always starts at these coordinates. 
