@@ -36,16 +36,18 @@ exponent
 
 #plot
 plot<-ggplot(q5_data_clean, aes(x=log_genome_length,y=log_virion_volume))+
-  geom_point(size=3)+
-  geom_smooth(method = lm)+
+  geom_point(size=2)+
+  geom_smooth(method = lm, size=1)+
   labs(x="log [Genome length (kb)]", y="log [Virion volume (nm3)]")+
-  theme_bw()
+  theme_bw()+
+  theme(axis.title=element_text(face="bold"))
+
 plot
 
 #Save plot as png
-save_plot_png<- function(plot, filename, size, res, scaling){
-  agg_png(filename, width = size, 
-          height= size, 
+save_plot_png<- function(plot, filename, width, height, res, scaling){
+  agg_png(filename, width = width, 
+          height= height, 
           units="cm",
           res=res,
           scaling=scaling)
@@ -54,7 +56,7 @@ save_plot_png<- function(plot, filename, size, res, scaling){
 }
 
 save_plot_png(plot, "question-5-data/reproduced_figure.png",
-              size=15, res=600, scaling=1)
+              width=18, height=15, res=600, scaling=1)
 
 
 #Using linear model to find estimated volume

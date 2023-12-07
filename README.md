@@ -1,6 +1,6 @@
 # Reproducible research: version control and R
 
-Questions 1, 2 & 3: 
+Questions 1, 2 & 3: [Linked here](https://github.com/841053/logistic_growth/tree/main/LogisticGrowthProject)
 
 Question 4:
 4.1 What do you observe?
@@ -19,14 +19,21 @@ Wikepedia defines a random seed as 'a number (or vector) used to initialise a ps
 Without a set seed detirmining the psuedorandom outcome, the seed will be set by default states of the computer system (e.g. Time). In situations where reproducibility is crucial then a seed must be set so others can see your results.
 
 4.3 Generate a reproducible simulation of brownian motion.
-<<<<<<< HEAD
-4.4 Show edits made in code
 
-Question 5:
+4.4 Image showing commit
+![Image showing commit changes](https://github.com/karlaashman/reproducible-research_homework/blob/dev/question%204%20commit.jpg)
+
+# Question 5: 
+
 Relationship between virus particle volume and genome length
 
-5.1 How many rows and columns?
+[code found here](https://github.com/841053/reproducible-research_homework/blob/main/question-5-data/question_5_code.R)
 
+5.1 How many rows and columns?
+```{r}
+#Dimensions i.e. number of rows and columns
+dim.data.frame(q5_data)
+```
 There are 33 rows and 13 columns in the table.
 
 5.2 What transformations can you use to fit a linear model to the data? Apply the transformation
@@ -65,29 +72,37 @@ My results match the results for dsDNA in the paper.
 5.4 Write the code to reproduce the figure shown below
 ```{r}
 #plot
-ggplot(q5_data_clean, aes(x=log_genome_length,y=log_virion_volume))+
-  geom_point()+
-  geom_smooth(method = lm)+
-  labs(x="log[Genome length (kb)]", y="log [Virion volume (nm3)]")+
-  theme_bw()
+
+plot<-ggplot(q5_data_clean, aes(x=log_genome_length,y=log_virion_volume))+
+  geom_point(size=2)+
+  geom_smooth(method = lm, size=1)+
+  labs(x="log [Genome length (kb)]", y="log [Virion volume (nm3)]")+
+  theme_bw()+
+  theme(axis.title=element_text(face="bold"))
+
+plot
+
 ```
+[Figure as png](https://github.com/841053/reproducible-research_homework/blob/main/question-5-data/reproduced_figure.png)
+
 5.5 What is the estimated volume of a 300 kb dsDNA virus?
 Using the linear model I can estimate the volume of a 300 kb dsDNA virus using the predict function.
 The estimated volume of a 300kb dsDNA virus under the linear model is 6,698,076nm^3
-=======
-4.4 Image showing commit
-![Image showing commit changes](https://github.com/karlaashman/reproducible-research_homework/blob/dev/question%204%20commit.jpg)
->>>>>>> f042524637346ef321c52bece67f58b0f814cfe9
-
 
 ```{r}
+#5.5 Estimating virus volume
+
+#Linear model
 linear_model_2<-lm(log(virion_volume_nm_a_nm_a_nm)~log(genome_length_kb), q5_data_clean )
 summary(linear_model_2)
 
+#Creating a data.frame with a genome length of 300kb
 genome_300_kb<-data.frame(genome_length_kb=(300))
 
+#Using predict() function to estimate volume for this value
 log_estimated_volume<-predict(linear_model_2, newdata=genome_300_kb)
 
+#Back-transforming the volume to get true volume in nm^3
 estimated_volume<-exp(log_estimated_volume)
 
 print(estimated_volume)
